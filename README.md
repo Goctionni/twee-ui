@@ -7,18 +7,15 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run watch
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies frontend for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Run electron app in dev mode (use with `npm run watch`)
 ```
-npm run lint
+npm run start
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
