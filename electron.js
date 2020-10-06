@@ -29,8 +29,9 @@ function createWindow() {
     ipcMain.handle('watchFolder', (event, filepath) => {
         if (folderWatcher) folderWatcher.close();
 
-        folderWatcher = chokidar.watch(filepath, { recursive: true, awaitWriteFinish: true, ignoreInitial: true });
+        folderWatcher = chokidar.watch(filepath, { recursive: true, awaitWriteFinish: true, ignoreInitial: true, ignored: path => path.includes('node_modules') });
         folderWatcher.on('all', (eventName, path) => {
+            if (path.includes('node_modules')) return; // this shouldn't happen since we ignore it in the watch config
             if (eventName.indexOf('Dir') >= 0) return;
             win.webContents.send('file-change', {eventName, path});
         });

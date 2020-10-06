@@ -90,7 +90,7 @@ export default class ProjectView extends Vue {
       maxX = Math.max(maxX, passageMaxX);
       maxY = Math.max(maxY, passageMaxY);
     }
-    return `width: ${maxX}px; height: ${maxY}px;`;
+    return `width: ${maxX * 1.1}px; height: ${maxY * 1.1}px;`;
   }
 
   public get lines(): Line[] {
@@ -211,6 +211,9 @@ export default class ProjectView extends Vue {
   }
 
   public passageOnMouseUp(event: MouseEvent): void {
+    if (this.movingPassage && this.movingPassage.position.x < 0) this.movingPassage.position.x = 0;
+    if (this.movingPassage && this.movingPassage.position.y < 0) this.movingPassage.position.y = 0;
+
     this.movingPassage = null;
     this.lastMousePositionPassage = null;
   }
@@ -255,10 +258,26 @@ export default class ProjectView extends Vue {
   public logPassage(passage: Passage) {
     console.log({ passage });
   }
+
+  public autoPosition(): void {
+    // for each file, find number of links to other files
+    // find StoryData
+    // findpassage with name storydata.start
+    // start with the given passages from the start file
+    // next up is file with most links from start
+    // next up is file with most links from previous
+    // etc
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+svg {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, .1);
+}
+
 .project {
   position: fixed;
   top: 0;
@@ -266,6 +285,7 @@ export default class ProjectView extends Vue {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: #222;
 }
 
 .content-container {

@@ -4,6 +4,7 @@ export const filesInFolder = (folder: string): string[] => {
     const files = [];
     const items = fs.readdirSync(folder);
     for (const item of items) {
+        if (item === 'node_modules') continue;
         const combinedPath = path.join(folder, item);
         const isDirectory = fs.lstatSync(combinedPath).isDirectory();
         if (isDirectory) {

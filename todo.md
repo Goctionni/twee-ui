@@ -1,0 +1,16 @@
+- toolbar
+- snap to grid
+- show grid
+- configure grid
+- sort files by chronology
+- auto sort files on load
+- sort by tag
+- color passages
+- set color (tag)
+- open in vsc
+- group select
+- additional visual markup
+- sort alphabetically
+- search
+
+- add new passage
