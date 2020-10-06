@@ -2,7 +2,7 @@
   "name": "twee-ui",
   "version": "0.1.0",
   "private": true,
-  "main": "electron.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "serve": "vue-cli-service serve",
